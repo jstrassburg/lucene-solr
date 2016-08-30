@@ -2,6 +2,7 @@ node {
     stage "Build Solr Package"
     env.PATH = "${tool 'ant'}/bin:${env.PATH}"
     checkout scm
+    sh 'ant ivy-bootstrap'
     sh 'ant create-package -f solr/build.xml'
     archive 'solr/package/**/*.tgz'
 
