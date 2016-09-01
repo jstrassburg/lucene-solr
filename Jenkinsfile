@@ -7,8 +7,7 @@ node {
     archive 'solr/package/**/*.tgz'
 
     stage "Test Solr"
-    env.PATH = "${tool 'ant'}/bin:${env.PATH}"
-    sh 'ant test -f solr/build.xml'
+    echo "This is where we would run: sh 'ant test -f solr/build.xml'"
 
     stage "Deploy Solr"
     echo "TODO: deploy"
