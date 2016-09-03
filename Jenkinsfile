@@ -3,7 +3,7 @@ node {
     env.PATH = "${tool 'ant'}/bin:${env.PATH}"
     checkout scm
     sh 'ant ivy-bootstrap'
-    sh 'ant create-package -f solr/build.xml'
+    sh 'ant -Dversion.suffix=${BUILD_NUMBER} create-package -f solr/build.xml'
     archive 'solr/package/**/*.tgz'
 
     stage "Test Solr"
