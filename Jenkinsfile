@@ -7,7 +7,7 @@ node {
     archive 'solr/package/**/*.tgz'
 
     stage "Test Solr"
-    sh 'ant test -f solr/build.xml'
+    sh 'ant test'
 
     stage "Deploy Solr"
     echo "TODO: deploy"
