@@ -12,7 +12,13 @@ DEPLOY_DIR=/home/vagrant/deploy
 
 # Install pre-requesites
 ssh -t -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -i $SSHKEYFILE vagrant@$server << PREREQ
-    # Java install here if you don't have it
+    sudo apt-get update -y
+    sudo apt-get install -y software-properties-common
+    sudo apt-add-repository -y ppa:webupd8team/java
+    echo debconf shared/accepted-oracle-license-v1-1 select true | sudo debconf-set-selections
+    echo debconf shared/accepted-oracle-license-v1-1 seen true | sudo debconf-set-selections
+    sudo apt-get update -y
+    sudo apt-get install -y oracle-java8-installer
     mkdir -p $DEPLOY_DIR
 PREREQ
 
