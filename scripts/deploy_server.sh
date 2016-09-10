@@ -8,12 +8,12 @@ solr_install_dir="$3"
 solr_port="$4"
 SSHKEYFILE="$5"
 
-DEPLOY_DIR=~/deploy
+DEPLOY_DIR=/home/vagrant/deploy
 
 # Install pre-requesites
 ssh -t -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -i $SSHKEYFILE vagrant@$server << PREREQ
-    sudo apt-get update -qy
-    sudo apt-get install default-jre
+    # Java install here if you don't have it
+    mkdir -p $DEPLOY_DIR
 PREREQ
 
 # Copy Solr package
