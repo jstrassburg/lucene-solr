@@ -27,7 +27,7 @@ solr_tarball=$(find solr/package -name solr*.tgz)
 solr_tarball_basename=$(basename "$solr_tarball")
 solr_tarball_filename=${solr_tarball_basename%.tgz}
 echo "Copying package $solr_tarball to $server..."
-scp -i $SSHKEYFILE $solr_tarball vagrant@$server:$DEPLOY_DIR
+scp -i $SSHKEYFILE -o StrictHostKeyChecking=no $solr_tarball vagrant@$server:$DEPLOY_DIR
 
 # Install Solr package
 ssh -t -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -i $SSHKEYFILE vagrant@$server << INSTALL
